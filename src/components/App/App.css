@@ -1,0 +1,15 @@
+/* ssrc/components/App/App.css */
+
+.page {
+  background-color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Inter', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page__content {
+  flex-grow: 1;
+}
