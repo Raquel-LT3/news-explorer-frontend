@@ -1,0 +1,36 @@
+/* src/components/About/About.css */
+
+.about {
+  display: flex;
+  padding: 80px 104px;
+  background-color: #fff;
+  gap: 102px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.about__image {
+  width: 464px;
+  height: 464px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about__title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 40px;
+  line-height: 46px;
+  margin: 0 0 24px;
+}
+
+.about__text {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 16px;
+}

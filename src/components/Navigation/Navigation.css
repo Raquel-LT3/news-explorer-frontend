@@ -1,0 +1,70 @@
+/* src/components/Navigation/Navigation.css */
+
+.navigation {
+  display: flex;
+  align-items: center; 
+  height: 100%;
+}
+
+.navigation__link {
+  display: flex;
+  align-items: center;
+  height: 100%; 
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  color: #fff;
+  margin-right: 34px;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
+}
+
+/* Active state from Figma - the bottom border */
+.navigation__link_active {
+  border-bottom: 3px solid #fff;
+}
+
+/* Theme modifier for the Saved News page */
+.navigation__link_theme_light {
+  color: #1A1B22;
+}
+
+.navigation__link_theme_light.navigation__link_active {
+  border-bottom: 3px solid #1A1B22;
+}
+
+.navigation__button {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.navigation__button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navigation__button_theme_light {
+  color: #1A1B22;
+  border: 1px solid #1A1B22;
+}
+
+
+
+.navigation__logout-icon {
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
