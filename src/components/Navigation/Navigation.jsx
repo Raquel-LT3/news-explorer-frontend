@@ -4,12 +4,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
-function Navigation({ isSavedNews }) {
-  // We will eventually get this from a Context or prop
+function Navigation({ isSavedNews, isMenuOpen }) { 
   const isLoggedIn = false; 
 
   return (
-    <nav className="navigation">
+    <nav className={`navigation ${isMenuOpen ? 'navigation_visible' : ''}`}>
       <NavLink 
         to="/" 
         className={({ isActive }) => 

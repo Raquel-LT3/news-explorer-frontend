@@ -39,3 +39,41 @@
   line-height: 24px;
   margin: 0 0 16px;
 }
+
+@media screen and (max-width: 768px) {
+  .about {
+    flex-direction: column; 
+    padding: 40px 16px 80px; 
+    align-items: center; /* This centers the image and the text block */
+    width: 100%;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .about__image {
+    width: 272px; 
+    height: 272px;
+    margin: 0 0 24px 0; 
+  }
+
+  .about__content {
+    max-width: 288px; 
+    width: 100%;
+    align-items: flex-start; 
+  }
+
+  .about__title {
+    
+    font-size: 30px; 
+    line-height: 40px;
+    margin-bottom: 16px;
+    text-align: left; 
+  }
+
+  .about__text {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    text-align: left; 
+  }
+}
