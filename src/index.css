@@ -1,19 +1,30 @@
 /* src/index.css */
 /* Global styles for the application */
 
-/* src/index.css */
+
+* {
+  box-sizing: border-box; /* This is mandatory for 1440px layouts */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   font-family: 'Inter', Arial, sans-serif;
   background-color: #fff;
 }
 
-body {
-  margin: 0;
-  display: block; /* This fixes the split-screen issue */
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
-
 #root {
   width: 100%;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; /* This hides the scrollbar if a tiny bit of content peaks out */
+  margin: 0;
+  padding: 0;
 }

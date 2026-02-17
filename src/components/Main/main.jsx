@@ -1,10 +1,10 @@
-// src/components/Main/main.jsx
+// src/components/Main/Main.jsx
 
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import './Main.css';
 
-function Main() {
+function Main({ onSearch }) { // 1. Receive the prop here
   return (
     <section className="main">
       <div className="main__container">
@@ -12,7 +12,7 @@ function Main() {
         <p className="main__subtitle">
           Find the latest news on any topic and save them in your personal account.
         </p>
-        <SearchForm />
+        <SearchForm onSearch={onSearch} /> {/* 2. Pass it down here */}
       </div>
     </section>
   );

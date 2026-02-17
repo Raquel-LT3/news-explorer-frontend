@@ -1,15 +1,19 @@
 /* src/components/About/About.css */
 
 .about {
-  display: flex;
-  padding: 80px 104px;
-  background-color: #fff;
-  gap: 102px;
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 80px 104px; 
+  display: flex;
+  gap: 120px; 
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .about__image {
+  flex-shrink: 0; 
   width: 464px;
   height: 464px;
   border-radius: 50%;
@@ -20,6 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 600px; 
 }
 
 .about__title {
