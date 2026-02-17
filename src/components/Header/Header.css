@@ -1,13 +1,14 @@
 /* src/components/Header/Header.css */
 
 .header {
-  position: absolute;
-  top: 0;
   width: 100%;
+  max-width: 1440px; 
+  margin: 0 auto;    
   display: flex;
   justify-content: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 1;
+  z-index: 10;
+  margin-bottom: -80px; 
 }
 
 /* Modifier for the Saved News page */
