@@ -41,14 +41,14 @@ function Navigation({
         type="button"
         onClick={isLoggedIn ? onLogout : onSignInClick}
       >
-        {/* Wrap the text in a span so we can style it separately from the icon */}
+        {/* If logged in, show username (fallback to Elise). If not, show Sign in */}
         <span className="navigation__username">
-          {isLoggedIn ? username : "Sign in"}
+          {isLoggedIn ? (username || "Elise") : "Sign in"}
         </span>
 
         {isLoggedIn && (
           <img
-            src={logoutWhite} // Use your imported variable name
+            src={logoutWhite}
             alt="Logout"
             className={`navigation__logout-icon ${isSavedNews ? "navigation__logout-icon_theme_light" : ""}`}
           />

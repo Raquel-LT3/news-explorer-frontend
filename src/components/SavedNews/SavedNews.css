@@ -1,28 +1,44 @@
 /* src/components/SavedNews/SavedNews.css */
 
 .saved-news {
-  background-color: #F5F6F7; /* Light grey background from Figma */
+  background-color: #fff; /* Header area is white */
   min-height: 100vh;
+  width: 100%;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
 }
 
-.saved-news__container {
-  padding: 0 104px;
-  max-width: 1440px;
+.saved-news__main {
+  background-color: #F5F6F7; /* This creates the edge-to-edge grey section */
   width: 100%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 60px 0; /* Vertical spacing for cards */
 }
 
-/* Tablet Adjustments */
-@media screen and (max-width: 768px) {
+.saved-news__container {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 104px; /* Matches the header's horizontal alignment */
+}
+
+/* Tablet (768px) */
+@media screen and (max-width: 1024px) {
+  .saved-news__main {
+    padding: 32px 0;
+  }
   .saved-news__container {
     padding: 0 40px;
   }
 }
 
-/* Mobile Adjustments */
-@media screen and (max-width: 320px) {
+/* Mobile (320px) */
+@media screen and (max-width: 767px) {
+  .saved-news__main {
+    padding: 24px 0;
+  }
   .saved-news__container {
     padding: 0 16px;
   }

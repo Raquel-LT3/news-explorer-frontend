@@ -16,8 +16,21 @@
   line-height: 24px;
   text-decoration: none;
   color: #fff;
-  transition: opacity 0.3s;
-  margin-right: 0;
+  transition: opacity 0.3s, border-bottom-color 0.3s;
+  /* Reserve space for the line so it doesn't jump when active */
+  border-bottom: 3px solid transparent; 
+  box-sizing: border-box;
+}
+
+.navigation__button_theme_light {
+  color: #1a1b22;
+  border: 1px solid #1a1b22;
+  background: transparent;
+}
+
+/* Force the icon to follow the theme */
+.navigation__logout-icon_theme_light {
+  filter: brightness(0) !important;
 }
 
 .navigation__link + .navigation__button {
@@ -30,7 +43,18 @@
 }
 
 .navigation__link_active {
-  box-shadow: inset 0 -3px 0 0 #fff; /* Use box-shadow for cleaner bottom border */
+  border-bottom-color: #ffffff;
+}
+
+.navigation__link_active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  display: none;
+
 }
 
 /* Theme modifier for Saved News page */
@@ -39,7 +63,7 @@
 }
 
 .navigation__link_theme_light.navigation__link_active {
-  box-shadow: inset 0 -3px 0 0 #1a1b22;
+  border-bottom-color: #1a1b22;
 }
 
 .navigation__button {
@@ -79,6 +103,15 @@
   filter: invert(1);
 }
 
+.navigation__logout-icon_theme_light {
+  filter: brightness(0); /* This is more reliable than invert(1) to make an icon pure black */
+}
+
+/* Ensure the button text matches the theme */
+.navigation__button_theme_light .navigation__username {
+  color: #1a1b22;
+}
+
 @media screen and (min-width: 768px) {
   .navigation {
     display: flex !important;
@@ -97,13 +130,9 @@
   .navigation__link {
     display: block;
     width: 100%;
-    font-size: 18px;
-    font-weight: 500;
-    color: #fff;
-    text-decoration: none;
-    padding: 16px 0; /* Vertical padding instead of huge margins */
-    margin: 0;
-    border: none !important;
+    color: #fff !important; /* Forces white text on mobile drawer */
+    border-bottom: none !important; /* Removes the underline on mobile */
+    padding: 16px 0;
   }
 
    .navigation_visible {
@@ -144,14 +173,41 @@
     display: flex;
     justify-content: center;
     border-radius: 100px;
-    border: 1px solid #fff;
+    border: 1px solid #fff !important;
     background: transparent;
   }
 
   .navigation__link_active {
     box-shadow: none !important;
     padding-bottom: 0; /* Add padding to create space for the active underline */
+    width: 100%;
+    color: #fff !important; /* Forces white text on mobile drawer */
+    border-bottom: none !important; /* Removes the underline on mobile */
+    padding: 16px 0;
+  }
+  
+
+  .navigation__logout-icon {
+    filter: brightness(0) invert(1) !important;
   }
 
+  .navigation_visible .navigation__username,
+  .navigation_visible .navigation__button {
+    color: #ffffff !important;
+  }
+
+  /* Force the logout icon to be white as well */
+  .navigation_visible .navigation__logout-icon {
+    filter: brightness(0) invert(1) !important;
+  }
+
+  .navigation__link_active::after {
+    display: none; /* underlined active links often look messy in mobile drawers */
+  }
+
+  .navigation__link_active {
+    opacity: 1;
+    font-weight: 700; /* Use font-weight instead of a border to show it's active */
+  }
  
 }
