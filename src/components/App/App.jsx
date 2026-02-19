@@ -47,12 +47,14 @@ function App() {
       handleSignInClick();
       return;
     }
-    api
-      .saveArticle(article)
-      .then((savedItem) => {
-        setSavedArticles([savedItem, ...savedArticles]);
-      })
-      .catch(console.error);
+
+    const articleToSave = { ...article, keyword: activeKeyword };
+
+   api.saveArticle(articleToSave)
+    .then((savedItem) => {
+      setSavedArticles([savedItem, ...savedArticles]);
+    })
+    .catch(console.error);
   };
 
   const handleDeleteArticle = (articleId) => {
@@ -124,12 +126,13 @@ function App() {
     setIsInfoTooltipOpen(false);
   };
 
-  const handleLogin = (email, password) => {
-    const nameToUse = currentUser || "Elise";
-    setCurrentUser(nameToUse);
-    setIsLoggedIn(true);
-    closeAllPopups();
-  };
+const handleLogin = (email, password, username) => {
+  // If the form provides a username, use it; otherwise, use a fallback
+  const nameToUse = username || "Raquel"; 
+  setCurrentUser(nameToUse);
+  setIsLoggedIn(true);
+  closeAllPopups();
+};
 
   const handleRegisterSubmit = (email, password, username) => {
     setCurrentUser(username);
@@ -195,7 +198,7 @@ function App() {
             path="/saved-news"
             element={
               <SavedNews
-                username={currentUser}
+                username={currentUser} // Pass the username to SavedNews
                 savedArticles={savedArticles}
                 onDelete={handleDeleteArticle}
               />

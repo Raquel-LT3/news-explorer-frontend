@@ -1,29 +1,30 @@
 // src/components/SavedNews/SavedNews.jsx
 
-import React from 'react';
-import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
-import NewsCard from '../NewsCard/NewsCard'; // Import NewsCard
-import './SavedNews.css';
+import React from "react";
+import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
+import NewsCard from "../NewsCard/NewsCard";
+import "./SavedNews.css";
 
-// 1. Accept savedArticles and onDelete as props
 function SavedNews({ username, savedArticles, onDelete }) {
+  // Logic MUST be inside the function so it has access to savedArticles
+  const keywords = savedArticles.map((article) => article.keyword);
+  const uniqueKeywords = [...new Set(keywords)];
+
   return (
     <div className="saved-news">
       <SavedNewsHeader username={username} savedArticles={savedArticles} />
-      
-      <section className="saved-news__main"> 
+
+      <section className="saved-news__main">
         <div className="saved-news__container">
-          {/* 2. Map through the savedArticles array to render cards */}
           <div className="news-card-list__grid">
             {savedArticles.map((article) => (
               <NewsCard
-                key={article._id || article.url} // Use a unique ID or URL as key
+                key={article._id || article.url}
                 article={article}
                 isLoggedIn={true}
                 isSavedPage={true}
                 onDelete={onDelete}
                 savedArticles={savedArticles}
-                // Mapping display properties to match your NewsCard props
                 image={article.image || article.urlToImage}
                 date={article.date || article.publishedAt}
                 title={article.title}
@@ -33,10 +34,15 @@ function SavedNews({ username, savedArticles, onDelete }) {
               />
             ))}
           </div>
-          
-          {/* Show a message if no articles are saved */}
-          {savedArticles.length === 0 && (
-            <p className="saved-news__no-articles">You haven't saved any articles yet.</p>
+
+          {savedArticles.length === 0 ? (
+            <p className="saved-news__no-articles">
+              You haven't saved any articles yet.
+            </p>
+          ) : (
+            <p className="saved-news__keywords">
+              By keywords: <b>{uniqueKeywords.join(", ")}</b>
+            </p>
           )}
         </div>
       </section>
