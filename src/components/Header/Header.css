@@ -6,7 +6,7 @@
   justify-content: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 10;
-  margin-bottom: -80px; 
+  margin-bottom: -80px;
   position: relative;
 }
 
@@ -21,9 +21,9 @@
   max-width: 1440px;
   height: 80px;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
-  padding: 0 104px; 
+  padding: 0 104px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -60,14 +60,11 @@
   background-color: #1a1b22; /* Forces it to dark when menu is open */
 }
 
-
-
 @media screen and (max-width: 1024px) {
   .header__container {
     padding: 0 40px;
   }
 }
-
 
 /* Mobile Menu Styles */
 
@@ -91,7 +88,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-
   .header__menu-button {
     display: block !important;
     width: 24px;
@@ -104,18 +100,16 @@
     cursor: pointer;
   }
 
-  /* The Overlay State */
   .header.header_menu-open {
-    display: flex; /* Change from block to flex */
-    flex-direction: column; /* Stack container on top of navigation */
+    height: 56px; /* Header stays slim, Navigation handles the drawer */
     background-color: #1a1b22;
-    height: 230px;
     position: fixed;
-    width: 100%;
-    z-index: 100;
-    border-radius: 0 0 16px 16px;
-    overflow: hidden;
-    position: fixed;
+    z-index: 101;
+    border-radius: 0;
+  }
+  
+  .header.header_menu-open::after {
+    display: none; /* Turn off the old broken shadow */
   }
 
   .header.header_menu-open .header__container {
@@ -158,5 +152,11 @@
     display: flex;
     background-color: #1a1b22;
     border-radius: 0 0 16px 16px;
+  }
+
+  .header__menu-button_hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
 }

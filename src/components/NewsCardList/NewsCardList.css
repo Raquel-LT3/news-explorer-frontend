@@ -43,3 +43,41 @@
   cursor: pointer;
   transition: background 0.3s;
 }
+
+.news-card-list__search-term {
+  color: #D1D2D6; 
+  font-style: italic; 
+}
+
+@media screen and (max-width: 1024px) {
+  .news-card-list {
+    padding: 40px; /* Tablet padding */
+  }
+  
+  .news-card-list__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards wide on tablet */
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .news-card-list {
+    padding: 32px 16px; /* Mobile padding */
+  }
+
+  .news-card-list__title {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 24px;
+  }
+
+  .news-card-list__grid {
+    grid-template-columns: 1fr; /* 1 card wide on mobile */
+    gap: 8px; /* Tighter gap between cards */
+    margin-bottom: 32px;
+  }
+
+  .news-card-list__button {
+    width: 100%; /* Button fills width on mobile */
+    height: 56px;
+  }
+}

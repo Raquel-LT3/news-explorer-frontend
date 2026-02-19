@@ -26,7 +26,23 @@
 .footer__social {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; /* Force consistent size for icons */
+  height: 24px;
+}
+
+.footer__social-link img {
+  width: 20px; /* Standard icon size */
+  height: 20px;
+  object-fit: contain;
+}
+
 
 .footer__link {
   text-decoration: none;
@@ -44,10 +60,25 @@
 }
 
 
+/* Tablet View: Side-by-side (768px to 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .footer {
+    padding: 32px 40px; /* Reduced side padding for tablet */
+    flex-direction: row; /* Keeps it horizontal like desktop */
+    justify-content: space-between;
+  }
 
+  .footer__navigation-wrapper {
+    gap: 20px; /* Tightens space between nav links and social icons */
+  }
+
+  .footer__nav {
+    gap: 20px; /* Tightens space between Home and TripleTen */
+  }
+}
 
 /* Mobile layout  */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .footer {
     flex-direction: column;
     align-items: flex-start;

@@ -14,6 +14,9 @@ function NewsCardList({ isLoggedIn }) {
       <div className="news-card-list__grid">
         <NewsCard 
           isLoggedIn={isLoggedIn}
+          isSearchResult={true}
+          isSavedPage={false}
+          keyword="Nature"
           image={nature1}
           date="November 4, 2020"
           title="Everyone Needs a Special 'Sit Spot' in Nature"
@@ -22,6 +25,9 @@ function NewsCardList({ isLoggedIn }) {
         />
         <NewsCard 
           isLoggedIn={isLoggedIn}
+          isSearchResult={true}
+          keyword="Nature"
+          isSavedPage={false}
           image={nature2}
           date="February 19, 2019"
           title="Nature makes you better"
@@ -30,6 +36,9 @@ function NewsCardList({ isLoggedIn }) {
         />
         <NewsCard 
           isLoggedIn={isLoggedIn}
+          isSearchResult={true}
+          isSavedPage={false}
+          keyword="Nature"
           image={grandTeton}
           date="October 19, 2020"
           title="Grand Teton Renews Historic Crest Trail"

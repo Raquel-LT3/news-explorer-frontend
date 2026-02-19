@@ -101,3 +101,71 @@
   color: #b6bcbf;
   text-transform: uppercase;
 }
+
+.news-card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 22px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1b22; /* Black text */
+  z-index: 1;
+}
+
+.news-card__keyword_style_grey {
+  color: #B6BCBF; /* A muted grey that matches Figma's secondary text */
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+}
+
+@media screen and (max-width: 620px) {
+  .news-card {
+    height: auto; /* Let content determine height on mobile */
+    max-width: 100%;
+    border-radius: 12px; /* Slightly softer corners for mobile */
+  }
+
+  .news-card__image-container {
+    height: 196px; /* Shorter image area for mobile */
+  }
+
+  .news-card__bookmark-button {
+    top: 8px; /* Move closer to edge */
+    right: 8px;
+  }
+
+  .news-card__content {
+    padding: 16px; /* Thinner padding on mobile */
+  }
+
+  .news-card__date {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .news-card__title {
+    font-size: 22px; /* Smaller title for mobile screens */
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+
+  .news-card__text {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 12px;
+  }
+
+  .news-card__source {
+    font-size: 14px;
+  }
+
+  .news-card__keyword {
+    top: 8px;
+    left: 8px;
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+}
