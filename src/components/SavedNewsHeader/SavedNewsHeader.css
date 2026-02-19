@@ -2,8 +2,7 @@
 
 .saved-news-header {
   background-color: #ffffff;
-  /* 120px top padding ensures it clears the Navigation bar */
-  padding: 120px 0 56px; 
+  padding: 40px 0 56px; 
   display: flex;
   justify-content: center;
   width: 100%;
