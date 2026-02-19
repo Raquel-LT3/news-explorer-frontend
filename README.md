@@ -1,16 +1,36 @@
-# React + Vite
+# News Explorer (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based application that allows users to search for news articles using the NewsAPI, save them to a personal profile, and manage their saved collection. This project was built as part of the TripleTen Web Development program.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+[Click here to view the live project](PASTE_YOUR_LINK_HERE)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Features
+* **Real-time News Search:** Fetches articles from the last 7 days using NewsAPI.
+* **Dynamic Content Rendering:** Results are shown 3 at a time with a "Show More" functionality.
+* **User Authentication Simulation:** Supports login, logout, and registration flows.
+* **Article Management:** Logged-in users can save and delete articles from their dashboard.
+* **Responsive Design:** Fully functional on Desktop, Tablet, and Mobile.
+* **Form Validation:** Ensures search queries are not empty before fetching data.
 
-## React Compiler
+## 💻 Tech Stack
+* **Framework:** React (Vite)
+* **Routing:** React Router DOM
+* **API:** NewsAPI (with TripleTen proxy for production)
+* **Styling:** CSS3 (BEM Methodology)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🔧 Installation & Setup
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔧 Installation & Setup
+
+1. Clone the repository:
+
+   ```bash
+
+   git clone [https://github.com/Raquel-LT3/news-explorer-frontend.git](https://github.com/Raquel-LT3/news-explorer-frontend.git)
+
+
+   Install dependencies: npm install
+
+   Run the development server: npm run dev

@@ -1,14 +1,20 @@
+//src/components/App/App.jsx
+
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
-import * as api from "../../utils/api";
 
+// API Imports
+import * as api from "../../utils/api";
+import * as newsApi from "../../utils/NewsApi";
+
+// Component Imports
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import About from "../About/About";
 import LoginPopup from "../LoginPopup/LoginPopup";
 import RegisterPopup from "../RegisterPopup/RegisterPopup";
-import InfoTooltip from "../InfoTooltip/InfoTooltip"; 
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import Preloader from "../PreLoader/Preloader";
 import NothingFound from "../NothingFound/NothingFound";
 import SavedNews from "../SavedNews/SavedNews";
@@ -29,6 +35,11 @@ function App() {
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [activeKeyword, setActiveKeyword] = useState("");
+
+  // Real API States
+  const [searchResults, setSearchResults] = useState([]);
+  const [isServerError, setIsServerError] = useState(false);
 
   /* --- API Handlers (Saving/Deleting) --- */
   const handleSaveArticle = (article) => {
@@ -36,7 +47,8 @@ function App() {
       handleSignInClick();
       return;
     }
-    api.saveArticle(article)
+    api
+      .saveArticle(article)
       .then((savedItem) => {
         setSavedArticles([savedItem, ...savedArticles]);
       })
@@ -44,31 +56,56 @@ function App() {
   };
 
   const handleDeleteArticle = (articleId) => {
-    api.deleteArticle(articleId)
+    api
+      .deleteArticle(articleId)
       .then(() => {
-        setSavedArticles((state) => 
-          state.filter((item) => item._id !== articleId)
+        setSavedArticles((state) =>
+          state.filter((item) => item._id !== articleId),
         );
       })
       .catch(console.error);
   };
 
-  /* --- Popup & Auth Handlers --- */
-  const handleSearchSubmit = (topic) => {
+  /* --- Real News API Handler --- */
+  const handleSearchSubmit = (keyword) => {
+    // 1. Requirement: Validation
+    if (!keyword) {
+      alert("Please enter a keyword"); // Simple validation for now
+      return;
+    }
+
+    setActiveKeyword(keyword);
+
+    // 2. Requirement: Show Preloader, Hide old results
     setShowResults(false);
     setIsNotFound(false);
+    setIsServerError(false);
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(true); // In reality, this will be your NewsAPI call
-      setIsLoading(false);
-      if (topic.toLowerCase() === "nature") {
-        setShowResults(true);
-      } else {
-        setIsNotFound(true);
-      }
-    }, 2000);
+
+    newsApi
+      .getNews(keyword)
+      .then((data) => {
+        if (data.articles.length === 0) {
+          // 3. Requirement: Show "Nothing Found"
+          setIsNotFound(true);
+        } else {
+          // 4. Requirement: Save articles to state
+          setSearchResults(data.articles);
+          setShowResults(true);
+        }
+      })
+      .catch((err) => {
+        // 5. Requirement: Handle Server Error
+        setIsServerError(true);
+        console.error(err);
+      })
+      .finally(() => {
+        // 6. Requirement: Remove Preloader
+        setIsLoading(false);
+      });
   };
 
+  /* --- Popup & Auth Handlers --- */
   const handleSignInClick = () => {
     closeAllPopups();
     setIsLoginPopupOpen(true);
@@ -80,7 +117,7 @@ function App() {
     setIsRegisterPopupOpen(true);
     setIsMenuOpen(false);
   };
-  
+
   const closeAllPopups = () => {
     setIsLoginPopupOpen(false);
     setIsRegisterPopupOpen(false);
@@ -106,7 +143,6 @@ function App() {
     navigate("/");
   };
 
-  /* --- Final Render --- */
   return (
     <div className="page">
       <Header
@@ -127,15 +163,30 @@ function App() {
             element={
               <>
                 <Main onSearch={handleSearchSubmit} />
+
                 {isLoading && <Preloader />}
+
                 {showResults && (
-                  <NewsCardList 
-                    isLoggedIn={isLoggedIn} 
-                    onSave={handleSaveArticle} 
+                  <NewsCardList
+                    key={activeKeyword} // Add this! It resets the "Show More" count for every new search
+                    isLoggedIn={isLoggedIn}
+                    onSave={handleSaveArticle}
                     savedArticles={savedArticles}
+                    articles={searchResults}
+                    keyword={activeKeyword}
                   />
                 )}
+
                 {isNotFound && <NothingFound />}
+
+                {/* Requirement: Show error message if API fails */}
+                {isServerError && (
+                  <p className="news-card-list__error">
+                    Sorry, something went wrong during the request. Please try
+                    again later.
+                  </p>
+                )}
+
                 <About />
               </>
             }
@@ -143,10 +194,10 @@ function App() {
           <Route
             path="/saved-news"
             element={
-              <SavedNews 
-                username={currentUser} 
-                savedArticles={savedArticles} 
-                onDelete={handleDeleteArticle} 
+              <SavedNews
+                username={currentUser}
+                savedArticles={savedArticles}
+                onDelete={handleDeleteArticle}
               />
             }
           />
