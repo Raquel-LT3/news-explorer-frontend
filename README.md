@@ -33,4 +33,5 @@ A React-based application that allows users to search for news articles using th
    npm install
 
    Bash:
-   npm run dev
+   npm run dev 
+   
