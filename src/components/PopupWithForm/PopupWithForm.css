@@ -1,4 +1,5 @@
-/* --- 1. Base Popup Overlay --- */
+/* src/components/PopupWithForm/PopupWithForm.css */
+
 .popup {
   position: fixed;
   top: 0;
@@ -20,7 +21,6 @@
   opacity: 1;
 }
 
-/* --- 2. Container & Sizing --- */
 .popup__container {
   background: #ffffff;
   border-radius: 16px;
@@ -46,7 +46,6 @@
   min-height: 182px;
 }
 
-/* --- 3. Header & Title --- */
 .popup__title {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
@@ -66,14 +65,12 @@
   background-size: contain;
 }
 
-/* --- 4. Form Elements (Labels & Inputs) --- */
 .popup__label {
   font-size: 12px;
   color: #2f71e5;
   margin-bottom: 8px;
   display: block;
 }
-
 
 .popup__label:not(:first-of-type) {
   margin-top: 11px; 
@@ -92,7 +89,6 @@
   color: #d1d2d6;
 }
 
-/* --- 5. Error States --- */
 .popup__error {
   color: #ff0000;
   font-size: 12px;
@@ -102,7 +98,6 @@
   display: block;
 }
 
-/* Centered error above the button  */
 .popup__error_type_server {
   color: #ff0000;
   font-size: 14px;
@@ -114,7 +109,6 @@
   min-height: 17px;
 }
 
-/* --- 6. Buttons & Footer --- */
 .popup__submit-button {
   width: 100%;
   height: 64px;
@@ -125,7 +119,7 @@
   font-weight: 500;
   font-size: 18px;
   cursor: pointer;
-  margin-top: 8px; /* Reduced to pull button up */
+  margin-top: 8px;
   box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
   transition: background 0.3s;
 }
@@ -150,7 +144,6 @@
   font-weight: 500;
 }
 
-/* Success Footer override */
 .popup__footer_type_success {
   text-align: left;
   position: absolute;
@@ -159,39 +152,16 @@
   margin: 0;
 }
 
-/* --- 7. Responsive (Mobile/Tablet) --- */
-@media screen and (min-width: 621px) and (max-width: 1024px) {
-  .popup__container {
-    width: 430px; 
-    margin: 0 auto;
-  }
-  
-  .popup__container_type_sign-in {
-    height: 380px; 
-  }
-
-  
-}
-
-/* Mobile View: Forces  */
 @media screen and (max-width: 620px) {
   .popup {
-    align-items: flex-start; /* Aligns popup to the top */
-    padding-top: 56px; /* Space for the mobile header/logo area */
-  }
-
-  .popup_opened ~ .header .header__menu-button {
-    display: none;
-  }
-
-  body:has(.popup_opened) .header__menu-button {
-    display: none;
+    align-items: flex-start;
+    padding-top: 56px;
   }
 
   .popup__container {
     width: 100%; 
     height: 100vh; 
-    border-radius: 16px 16px 0 0 ; 
+    border-radius: 16px 16px 0 0; 
     padding: 16px 16px 22px;
     margin: 0 auto;
     display: flex;
@@ -209,11 +179,6 @@
     height: 24px;
   }
 
-  .popup__form {
-    display: flex;
-    flex-direction: column;
-  }
-
   .popup__footer {
     margin-top: 16px; 
     margin-bottom: 20px; 
@@ -221,7 +186,7 @@
     width: 100%;
   }
 
- .popup__submit-button {
+  .popup__submit-button {
     width: 100%;
     margin-top: 24px;   
     margin-bottom: 0;   

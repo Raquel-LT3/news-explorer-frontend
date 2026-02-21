@@ -3,17 +3,17 @@
 import React from 'react';
 import './SavedNewsHeader.css';
 
+/**
+ * SavedNewsHeader component displays the count and keywords 
+ * for the user's saved articles.
+ */
 function SavedNewsHeader({ username, savedArticles = [] }) {
   const count = savedArticles.length;
 
-  // --- Logic for Dynamic Keywords ---
-  // 1. Create an array of just the keywords
+  // Process keywords to display unique values and handle overflow
   const keywords = savedArticles.map((art) => art.keyword);
-  
-  // 2. Remove duplicates
   const uniqueKeywords = [...new Set(keywords)]; 
   
-  // 3. Format the display string (e.g., "Nature, Parks, and 1 other")
   const displayKeywords = uniqueKeywords.length <= 3 
     ? uniqueKeywords.join(', ') 
     : `${uniqueKeywords.slice(0, 2).join(', ')}, and ${uniqueKeywords.length - 2} other`;
@@ -28,7 +28,6 @@ function SavedNewsHeader({ username, savedArticles = [] }) {
         <p className="saved-news-header__keywords">
           By keywords:{" "}
           <span className="saved-news-header__keywords-bold">
-            {/* 4. Use the dynamic variable here */}
             {displayKeywords}
           </span>
         </p>

@@ -1,19 +1,17 @@
 // src/components/LoginPopup/LoginPopup.jsx
-import React, { useState } from "react"; // Ensure React is imported!
+import React, { useState } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 function LoginPopup({ isOpen, onClose, onSignUpClick, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Simple validation logic for testing
+  // Basic validation logic for the submit button state
   const isValid = email.includes("@") && password.length > 5;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-   if (isValid) {
-      // 2. Call the function we passed down from App.jsx
+    if (isValid) {
       onLogin(email, password);
     }
   };
@@ -31,10 +29,10 @@ function LoginPopup({ isOpen, onClose, onSignUpClick, onLogin }) {
       onSubmit={handleSubmit}
     >
       <label className="popup__label">Email</label>
-      <input 
-        className="popup__input" 
-        placeholder="Enter email" 
-        type="email" 
+      <input
+        className="popup__input"
+        placeholder="Enter email"
+        type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -44,15 +42,17 @@ function LoginPopup({ isOpen, onClose, onSignUpClick, onLogin }) {
       </span>
 
       <label className="popup__label">Password</label>
-      <input 
-        className="popup__input" 
-        placeholder="Enter password" 
+      <input
+        className="popup__input"
+        placeholder="Enter password"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <span className="popup__error"></span>
+      <span className="popup__error">
+        {password && password.length <= 5 ? "Password is too short" : ""}
+      </span>
     </PopupWithForm>
   );
 }

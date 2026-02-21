@@ -1,4 +1,4 @@
-/* src/components/PreLoader/Preloader.css */
+/* src/components/Preloader/Preloader.css */
 
 .preloader {
   display: flex;
@@ -16,7 +16,6 @@
 .preloader__icon {
   width: 74px;
   height: 74px;
-  /* This line triggers the animation we define below */
   animation: spin 1s linear infinite;
 }
 
@@ -28,7 +27,7 @@
   line-height: 24px;
 }
 
-/* The magic rotation logic */
+/* Spinner rotation animation */
 @keyframes spin {
   from {
     transform: rotate(0deg);

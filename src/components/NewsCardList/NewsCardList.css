@@ -9,9 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box; /* Ensures the 104px padding stays inside the 1440px */
+  box-sizing: border-box;
 }
-
 
 .news-card-list__title {
   align-self: flex-start;
@@ -24,7 +23,6 @@
 
 .news-card-list__grid {
   display: grid;
-  /* minmax(0, 1fr) is the industry secret to stopping horizontal scrolls in grids */
   grid-template-columns: repeat(3, minmax(0, 1fr)); 
   gap: 16px;
   width: 100%;
@@ -35,33 +33,35 @@
 .news-card-list__button {
   width: 288px;
   height: 64px;
-  background: #FFF;
+  background: #FFFFFF;
   border: none;
   border-radius: 80px;
   font-size: 18px;
   font-weight: 500;
+  color: #1A1B22;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.news-card-list__search-term {
-  color: #D1D2D6; 
-  font-style: italic; 
+.news-card-list__button:hover {
+  background-color: #E6E8EB;
 }
 
+/* Tablet Layout */
 @media screen and (max-width: 1024px) {
   .news-card-list {
-    padding: 40px; /* Tablet padding */
+    padding: 40px;
   }
   
   .news-card-list__grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards wide on tablet */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Mobile Layout */
 @media screen and (max-width: 620px) {
   .news-card-list {
-    padding: 32px 16px; /* Mobile padding */
+    padding: 32px 16px;
   }
 
   .news-card-list__title {
@@ -71,13 +71,13 @@
   }
 
   .news-card-list__grid {
-    grid-template-columns: 1fr; /* 1 card wide on mobile */
-    gap: 8px; /* Tighter gap between cards */
+    grid-template-columns: 1fr;
+    gap: 8px;
     margin-bottom: 32px;
   }
 
   .news-card-list__button {
-    width: 100%; /* Button fills width on mobile */
+    width: 100%;
     height: 56px;
   }
 }

@@ -4,6 +4,9 @@ import React from "react";
 import "./NewsCard.css";
 import { formatDate } from "../../utils/dateUtils";
 
+/**
+ * NewsCard component for displaying individual article results
+ */
 function NewsCard({
   article,
   isLoggedIn,
@@ -18,12 +21,14 @@ function NewsCard({
   source,
   keyword,
 }) {
+  // Check if this article is already in the saved list
   const isSaved = savedArticles?.some(
     (item) => item.url === (article?.url || image),
   );
 
   const handleButtonClick = () => {
     if (!isLoggedIn) return;
+    
     if (isSavedPage) {
       onDelete(article._id || article.url);
     } else {
@@ -40,12 +45,12 @@ function NewsCard({
 
         <img src={image} alt={title} className="news-card__image" />
 
-        {/* CORRECTION: Button and Tooltip are now adjacent so CSS '+' works */}
         <button
           className={`news-card__button 
             ${isSavedPage ? "news-card__button_type_delete" : "news-card__button_type_bookmark"} 
             ${!isSavedPage && isSaved ? "news-card__button_type_bookmark_marked" : ""}`}
           type="button"
+          aria-label={isSavedPage ? "Delete article" : "Save article"}
           onClick={handleButtonClick}
         />
 
@@ -61,9 +66,7 @@ function NewsCard({
       <div className="news-card__content">
         <p className="news-card__date">{formatDate(date)}</p>
         <h3 className="news-card__title">{title}</h3>
-        {/* The text will take up space, but not 'grow' */}
         <p className="news-card__text">{text}</p>
-        {/* The source will be pushed to the bottom by CSS margin-top: auto */}
         <p className="news-card__source">{source}</p>
       </div>
     </article>

@@ -9,12 +9,14 @@ function InfoTooltip({ isOpen, onClose, onSignInClick }) {
       title="Registration successfully completed!"
       isOpen={isOpen}
       onClose={onClose}
-      buttonText="" // Empty string so the button hides
+      buttonText="" // Empty string hides the primary action button for this variant
       linkText="Sign in"
       onLinkClick={onSignInClick}
       isValid={true}
     >
-      {/* No inputs needed here per Figma */}
+      {/* This variant of the popup serves as a notification 
+          and does not require input fields. 
+      */}
     </PopupWithForm>
   );
 }

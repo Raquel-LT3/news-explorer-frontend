@@ -1,6 +1,5 @@
 /* src/components/Footer/Footer.css */
 
-/* Desktop layout */
 .footer {
   width: 100%;
   max-width: 1440px;
@@ -33,22 +32,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px; /* Force consistent size for icons */
+  width: 24px;
   height: 24px;
 }
 
 .footer__social-link img {
-  width: 20px; /* Standard icon size */
+  width: 20px;
   height: 20px;
   object-fit: contain;
 }
 
-
 .footer__link {
   text-decoration: none;
   color: #1a1b22;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   line-height: 24px;
+  transition: opacity 0.3s ease;
+}
+
+.footer__link:hover {
+  opacity: 0.6;
 }
 
 .footer__copyright {
@@ -59,25 +63,22 @@
   margin: 0;
 }
 
-
-/* Tablet View: Side-by-side (768px to 1024px) */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+/* Tablet View (768px - 1024px) */
+@media screen and (max-width: 1024px) {
   .footer {
-    padding: 32px 40px; /* Reduced side padding for tablet */
-    flex-direction: row; /* Keeps it horizontal like desktop */
-    justify-content: space-between;
+    padding: 32px 40px;
   }
 
   .footer__navigation-wrapper {
-    gap: 20px; /* Tightens space between nav links and social icons */
+    gap: 20px;
   }
 
   .footer__nav {
-    gap: 20px; /* Tightens space between Home and TripleTen */
+    gap: 20px;
   }
 }
 
-/* Mobile layout  */
+/* Mobile View (Below 768px) */
 @media screen and (max-width: 767px) {
   .footer {
     flex-direction: column;
@@ -86,36 +87,33 @@
   }
 
   .footer__navigation-wrapper {
-    order: 1; 
-    display: flex; 
-    flex-direction: row; /* Nav and Social side-by-side */
-    justify-content: space-between; /* Links on left, Icons on right */
-    align-items: flex-start; /* Aligns icons with "Home" */
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-    margin-bottom: 40px; /* The main gap before the copyright */
+    margin-bottom: 38px;
   }
 
   .footer__nav {
-    display: flex;
-    flex-direction: column; 
-    gap: 16px; /* Space between Home and TripleTen */
+    flex-direction: column;
+    gap: 16px;
   }
 
   .footer__social {
-    display: flex;
     gap: 27px;
     padding-top: 4px;
   }
 
-  .footer__social a img {
-    width: 24px;   /* Matches your line-height */
+  .footer__social-link img {
+    width: 24px;
     height: 24px;
-    display: block;
   }
 
   .footer__copyright {
-    order: 2; 
-    margin: 0;
-    width: 100%;
+    order: 2;
+    font-size: 16px;
+    line-height: 22px;
   }
 }

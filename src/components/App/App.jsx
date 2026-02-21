@@ -1,4 +1,4 @@
-//src/components/App/App.jsx
+// src/components/App/App.jsx
 
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
@@ -36,53 +36,45 @@ function App() {
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [activeKeyword, setActiveKeyword] = useState("");
-
-  // Real API States
   const [searchResults, setSearchResults] = useState([]);
   const [isServerError, setIsServerError] = useState(false);
 
-  /* --- API Handlers (Saving/Deleting) --- */
+  /* --- Article Handlers (Simulated for Sprint 3) --- */
+
   const handleSaveArticle = (article) => {
     if (!isLoggedIn) {
       handleSignInClick();
       return;
     }
 
-    const articleToSave = { ...article, keyword: activeKeyword };
-
-    api
-      .saveArticle(articleToSave)
-      .then((savedItem) => {
-        setSavedArticles([savedItem, ...savedArticles]);
-      })
-      .catch(console.error);
+    // Simulate backend response by adding to local state
+    const savedItem = { 
+      ...article, 
+      _id: Math.random().toString(36).substr(2, 9), 
+      keyword: activeKeyword 
+    };
+    
+    setSavedArticles([savedItem, ...savedArticles]);
   };
 
   const handleDeleteArticle = (articleIdentifier) => {
-    api
-      .deleteArticle(articleIdentifier)
-      .then(() => {
-        setSavedArticles((state) =>
-          state.filter(
-            (item) =>
-              item._id !== articleIdentifier && item.url !== articleIdentifier,
-          ),
-        );
-      })
-      .catch(console.error);
+    // Simulate backend deletion by filtering local state
+    setSavedArticles((state) =>
+      state.filter(
+        (item) =>
+          item._id !== articleIdentifier && item.url !== articleIdentifier,
+      ),
+    );
   };
 
-  /* --- Real News API Handler --- */
+  /* --- News API Handler --- */
   const handleSearchSubmit = (keyword) => {
-    // 1. Requirement: Validation
-    if (!keyword) {
-      alert("Please enter a keyword"); // Simple validation for now
-      return;
+    // Validation: Prevent search if keyword is empty or whitespace
+    if (!keyword || keyword.trim().length === 0) {
+      return; 
     }
 
     setActiveKeyword(keyword);
-
-    // 2. Requirement: Show Preloader, Hide old results
     setShowResults(false);
     setIsNotFound(false);
     setIsServerError(false);
@@ -92,26 +84,23 @@ function App() {
       .getNews(keyword)
       .then((data) => {
         if (data.articles.length === 0) {
-          // 3. Requirement: Show "Nothing Found"
           setIsNotFound(true);
         } else {
-          // 4. Requirement: Save articles to state
           setSearchResults(data.articles);
           setShowResults(true);
         }
       })
       .catch((err) => {
-        // 5. Requirement: Handle Server Error
         setIsServerError(true);
-        console.error(err);
+        // Errors are kept for debugging during development, 
+        // but typically minimized for production
       })
       .finally(() => {
-        // 6. Requirement: Remove Preloader
         setIsLoading(false);
       });
   };
 
-  /* --- Popup & Auth Handlers --- */
+  /* --- Popup & Auth Handlers (Simulated) --- */
   const handleSignInClick = () => {
     closeAllPopups();
     setIsLoginPopupOpen(true);
@@ -131,7 +120,6 @@ function App() {
   };
 
   const handleLogin = (email, password, username) => {
-    // If the form provides a username, use it; otherwise, use a fallback
     const nameToUse = username || "Raquel";
     setCurrentUser(nameToUse);
     setIsLoggedIn(true);
@@ -139,7 +127,7 @@ function App() {
   };
 
   const handleRegisterSubmit = (email, password, username) => {
-    setCurrentUser(username);
+    setCurrentUser(username || "New User");
     setIsRegisterPopupOpen(false);
     setIsInfoTooltipOpen(true);
   };
@@ -175,9 +163,10 @@ function App() {
 
                 {showResults && (
                   <NewsCardList
-                    key={activeKeyword} // Add this! It resets the "Show More" count for every new search
+                    key={activeKeyword}
                     isLoggedIn={isLoggedIn}
                     onSave={handleSaveArticle}
+                    onDelete={handleDeleteArticle}
                     savedArticles={savedArticles}
                     articles={searchResults}
                     keyword={activeKeyword}
@@ -186,7 +175,6 @@ function App() {
 
                 {isNotFound && <NothingFound />}
 
-                {/* Requirement: Show error message if API fails */}
                 {isServerError && (
                   <p className="news-card-list__error">
                     Sorry, something went wrong during the request. Please try
@@ -202,7 +190,7 @@ function App() {
             path="/saved-news"
             element={
               <SavedNews
-                username={currentUser} // Pass the username to SavedNews
+                username={currentUser}
                 savedArticles={savedArticles}
                 onDelete={handleDeleteArticle}
               />

@@ -1,18 +1,17 @@
 // src/components/Header/Header.jsx
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 
-// 1. Add the props here so Header can receive them from App.jsx
 function Header({
-isLoggedIn,
+  isLoggedIn,
   onSignInClick,
   username,
   onLogout,
   isMenuOpen,
   setIsMenuOpen,
-  isLoginPopupOpen,    
+  isLoginPopupOpen,
   isRegisterPopupOpen,
 }) {
   const location = useLocation();
@@ -38,21 +37,22 @@ isLoggedIn,
 
         <button
           className={`header__menu-button 
-    ${isSavedNews ? "header__menu-button_theme_light" : ""} 
-    ${isMenuOpen ? "header__menu-button_type_close" : ""}
-    ${isLoginPopupOpen || isRegisterPopupOpen ? "header__menu-button_hidden" : ""}`}
+            ${isSavedNews ? "header__menu-button_theme_light" : ""} 
+            ${isMenuOpen ? "header__menu-button_type_close" : ""}
+            ${isLoginPopupOpen || isRegisterPopupOpen ? "header__menu-button_hidden" : ""}
+          `}
           type="button"
+          aria-label="Toggle menu"
           onClick={toggleMenu}
         />
 
-        {/* 2. Pass the props down to Navigation */}
         <Navigation
           isSavedNews={isSavedNews}
           isMenuOpen={isMenuOpen}
           isLoggedIn={isLoggedIn}
           onSignInClick={onSignInClick}
           onLogout={onLogout}
-          username={username} // Added this missing prop!
+          username={username}
         />
       </div>
     </header>

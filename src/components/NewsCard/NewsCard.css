@@ -1,10 +1,11 @@
 /* src/components/NewsCard/NewsCard.css */
 
+/* --- 1. Main Card Container --- */
 .news-card {
   width: 100%;
   max-width: 400px;
   height: 576px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -25,7 +26,7 @@
   object-fit: cover;
 }
 
-/* Base button styles */
+/* --- 2. Interactive UI Elements (Buttons & Tooltips) --- */
 .news-card__button {
   position: absolute;
   top: 24px;
@@ -35,14 +36,16 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #ffffff;
   background-repeat: no-repeat;
   background-position: center;
   z-index: 2;
   box-sizing: border-box;
   padding: 0;
+  transition: background-image 0.3s ease;
 }
 
+/* Button Variants */
 .news-card__button_type_bookmark {
   background-image: url("../../images/normal bookmark.svg");
 }
@@ -63,14 +66,14 @@
   background-image: url("../../images/trash-hover.svg");
 }
 
-/* Tooltip logic - Works because button is next to tooltip in JSX */
+/* Contextual Tooltip */
 .news-card__tooltip {
   position: absolute;
   top: 24px;
   right: 70px;
   min-width: 159px;
   height: 40px;
-  background: #fff;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,18 +87,18 @@
   z-index: 3;
 }
 
-/* Show tooltip on hover only if it has text content */
+/* Trigger tooltip visibility via adjacent sibling selector */
 .news-card__button:hover + .news-card__tooltip:not(:empty) {
   visibility: visible;
   opacity: 1;
 }
 
-/* Keyword alignment - Level with buttons */
+/* Keyword Badge */
 .news-card__keyword {
   position: absolute;
   top: 24px;
   left: 24px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 10px;
   height: 40px;
   min-width: 40px;
@@ -104,7 +107,7 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #1a1b22;
@@ -113,15 +116,16 @@
   margin: 0;
 }
 
+/* --- 3. Card Content & Typography --- */
 .news-card__content {
   padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  flex: 1; /* Makes this area fill the remaining height */
+  flex: 1; 
 }
 
 .news-card__date {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro", Arial, sans-serif;
   font-size: 18px;
   line-height: 24px;
   color: #b6bcbf;
@@ -132,6 +136,7 @@
   font-family: "Roboto Slab", serif;
   font-size: 26px;
   line-height: 30px;
+  font-weight: 400;
   margin: 0 0 16px;
   color: #1a1b22;
   display: -webkit-box;
@@ -142,6 +147,7 @@
 }
 
 .news-card__text {
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
   line-height: 22px;
   color: #1a1b22;
@@ -161,15 +167,14 @@
   line-height: 20px;
   color: #b6bcbf;
   text-transform: uppercase;
-  /* Fixed alignment: margin-top auto pins it to the bottom */
   margin: auto 0 0 0;
   padding-bottom: 24px;
 }
 
-/* Mobile Adjustments */
+/* --- 4. Responsive Media Queries --- */
 @media screen and (max-width: 620px) {
   .news-card {
-    height: 440px; /* Fixed height stops "popping" */
+    height: 440px; 
     max-width: 100%;
     border-radius: 12px;
   }
@@ -178,7 +183,8 @@
     height: 196px;
   }
 
-  .news-card__button, .news-card__keyword {
+  .news-card__button, 
+  .news-card__keyword {
     top: 8px;
   }
 

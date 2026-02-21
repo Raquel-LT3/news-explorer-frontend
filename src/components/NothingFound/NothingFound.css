@@ -30,14 +30,23 @@
 }
 
 .nothing-found__text {
-  /* Figma Constraints: This prevents the text from stretching too wide */
   max-width: 356px;
   margin: 16px 0 0;
-
-  /* Figma Typography */
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   line-height: 24px;
   text-align: center;
   color: #6c707a;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 767px) {
+  .nothing-found {
+    height: auto;
+    padding: 40px 16px;
+  }
+
+  .nothing-found__title {
+    font-size: 22px;
+  }
 }

@@ -5,37 +5,21 @@
   flex-direction: row;
   align-items: center;
   height: 100%;
-  gap: 42px; /* Base gap between text links */
+  gap: 42px;
 }
 
 .navigation__link {
   display: flex;
   align-items: center;
   height: 100%;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   line-height: 24px;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   transition: opacity 0.3s, border-bottom-color 0.3s;
-  /* Reserve space for the line so it doesn't jump when active */
   border-bottom: 3px solid transparent; 
   box-sizing: border-box;
-}
-
-.navigation__button_theme_light {
-  color: #1a1b22;
-  border: 1px solid #1a1b22;
-  background: transparent;
-}
-
-/* Force the icon to follow the theme */
-.navigation__logout-icon_theme_light {
-  filter: brightness(0) !important;
-}
-
-.navigation__link + .navigation__button {
-  /* Add margin only to the first button after the last link */
-  margin-left: 22px;
 }
 
 .navigation__link:hover {
@@ -46,18 +30,7 @@
   border-bottom-color: #ffffff;
 }
 
-.navigation__link_active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  display: none;
-
-}
-
-/* Theme modifier for Saved News page */
+/* Light theme modifiers for Saved News page */
 .navigation__link_theme_light {
   color: #1a1b22;
 }
@@ -81,6 +54,7 @@
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .navigation__button_theme_light {
@@ -94,49 +68,18 @@
   object-fit: contain;
 }
 
-.navigation__username {
-  display: inline-block;
-}
-
-/* Dark icon for light background on Saved News page */
 .navigation__logout-icon_theme_light {
-  filter: invert(1);
+  filter: brightness(0);
 }
 
-.navigation__logout-icon_theme_light {
-  filter: brightness(0); /* This is more reliable than invert(1) to make an icon pure black */
-}
-
-/* Ensure the button text matches the theme */
-.navigation__button_theme_light .navigation__username {
-  color: #1a1b22;
-}
-
-@media screen and (min-width: 768px) {
-  .navigation {
-    display: flex !important;
-  }
-}
-
+/* Mobile layout */
 @media screen and (max-width: 767px) {
   .navigation {
     display: none;
   }
 
-  .popup {
-    z-index: 1000; /* Popup sits on top of navigation */
-  }
-
-  .navigation__link {
-    display: block;
-    width: 100%;
-    color: #fff !important; /* Forces white text on mobile drawer */
-    border-bottom: none !important; /* Removes the underline on mobile */
-    padding: 16px 0;
-  }
-
-   .navigation_visible {
-   position: fixed;
+  .navigation_visible {
+    position: fixed;
     top: 56px;
     left: 0;
     width: 100%;
@@ -152,62 +95,31 @@
     z-index: 100;
   }
 
-  .navigation__link + .navigation__link {
-    margin-top: 0; 
-    padding-top: 0;
+  .navigation__link {
+    width: 100%;
+    color: #ffffff !important;
+    border-bottom: none !important;
+    padding: 16px 0;
   }
 
-  .navigation__link:first-of-type {
-    margin-top: 16px; 
+  .navigation__link_active {
+    font-weight: 700;
   }
 
- .navigation__button {
+  .navigation__button {
     position: absolute;
     bottom: 24px;
     left: 16px;
-    right: 16px; /* Forces it to center while keeping 288px-ish width */
+    right: 16px;
     width: auto; 
     max-width: 288px;
     margin: 0 auto !important;
     height: 56px;
-    display: flex;
-    justify-content: center;
-    border-radius: 100px;
-    border: 1px solid #fff !important;
-    background: transparent;
-  }
-
-  .navigation__link_active {
-    box-shadow: none !important;
-    padding-bottom: 0; /* Add padding to create space for the active underline */
-    width: 100%;
-    color: #fff !important; /* Forces white text on mobile drawer */
-    border-bottom: none !important; /* Removes the underline on mobile */
-    padding: 16px 0;
-  }
-  
-
-  .navigation__logout-icon {
-    filter: brightness(0) invert(1) !important;
-  }
-
-  .navigation_visible .navigation__username,
-  .navigation_visible .navigation__button {
+    border: 1px solid #ffffff !important;
     color: #ffffff !important;
   }
 
-  /* Force the logout icon to be white as well */
   .navigation_visible .navigation__logout-icon {
     filter: brightness(0) invert(1) !important;
   }
-
-  .navigation__link_active::after {
-    display: none; /* underlined active links often look messy in mobile drawers */
-  }
-
-  .navigation__link_active {
-    opacity: 1;
-    font-weight: 700; /* Use font-weight instead of a border to show it's active */
-  }
- 
 }

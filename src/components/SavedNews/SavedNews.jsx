@@ -5,14 +5,17 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCard from "../NewsCard/NewsCard";
 import "./SavedNews.css";
 
+/**
+ * SavedNews component displays the user's saved articles
+ * and summary of their saved keywords.
+ */
 function SavedNews({ username, savedArticles, onDelete }) {
-  // Logic MUST be inside the function so it has access to savedArticles
-  const keywords = savedArticles.map((article) => article.keyword);
-  const uniqueKeywords = [...new Set(keywords)];
-
   return (
     <div className="saved-news">
-      <SavedNewsHeader username={username} savedArticles={savedArticles} />
+      <SavedNewsHeader 
+        username={username} 
+        savedArticles={savedArticles} 
+      />
 
       <section className="saved-news__main">
         <div className="saved-news__container">
@@ -35,13 +38,9 @@ function SavedNews({ username, savedArticles, onDelete }) {
             ))}
           </div>
 
-          {savedArticles.length === 0 ? (
+          {savedArticles.length === 0 && (
             <p className="saved-news__no-articles">
               You haven't saved any articles yet.
-            </p>
-          ) : (
-            <p className="saved-news__keywords">
-              By keywords: <b>{uniqueKeywords.join(", ")}</b>
             </p>
           )}
         </div>

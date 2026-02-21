@@ -3,7 +3,7 @@
 A React-based application that allows users to search for news articles using the NewsAPI, save them to a personal profile, and manage their saved collection. This project was built as part of the TripleTen Web Development program.
 
 ## 🚀 Live Demo
-[Click here to view the live project](PASTE_YOUR_LINK_HERE)
+[Click here to view the live project](https://superb-yeot-f37b58.netlify.app/)
 
 ## 🛠 Features
 * **Real-time News Search:** Fetches articles from the last 7 days using NewsAPI.

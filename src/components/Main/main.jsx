@@ -4,7 +4,11 @@ import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import './Main.css';
 
-function Main({ onSearch }) { // 1. Receive the prop here
+/**
+ * Main component representing the Hero section
+ * @param {function} onSearch - Handler for processing search input
+ */
+function Main({ onSearch }) {
   return (
     <section className="main">
       <div className="main__container">
@@ -12,7 +16,8 @@ function Main({ onSearch }) { // 1. Receive the prop here
         <p className="main__subtitle">
           Find the latest news on any topic and save them in your personal account.
         </p>
-        <SearchForm onSearch={onSearch} /> {/* 2. Pass it down here */}
+        
+        <SearchForm onSearch={onSearch} />
       </div>
     </section>
   );

@@ -12,7 +12,6 @@
   max-width: 1440px;
   width: 100%;
   padding: 0 104px;
-  /* FORCE STACKING HERE */
   display: flex;
   flex-direction: column; 
   align-items: flex-start; 
@@ -24,7 +23,7 @@
   font-size: 18px;
   line-height: 24px;
   color: rgba(26, 27, 34, 0.5);
-  margin: 0 0 28px; /* Margin below 'Saved articles' */
+  margin: 0 0 28px;
 }
 
 .saved-news-header__title {
@@ -33,7 +32,7 @@
   font-size: 40px; 
   line-height: 46px;
   color: #1a1b22;
-  margin: 0 0 30px; /* Exact 30px spacing from Figma */
+  margin: 0 0 30px;
   max-width: 530px;
 }
 
@@ -46,29 +45,45 @@
 }
 
 .saved-news-header__keywords-bold  {
-  font-weight: bold;
+  font-weight: 700;
 }
 
-/* TABLET POLISH */
+/* TABLET ADJUSTMENTS (768px - 1024px) */
 @media screen and (max-width: 1024px) {
   .saved-news-header {
-    padding: 100px 0 48px;
+    padding: 40px 0 48px; 
   }
+  
   .saved-news-header__container {
     padding: 0 40px;
   }
+
+  .saved-news-header__subtitle {
+    margin-bottom: 16px; 
+  }
+
   .saved-news-header__title {
     font-size: 30px;
     line-height: 34px;
+    margin-bottom: 16px;
   }
 }
 
-/* MOBILE POLISH */
+/* MOBILE ADJUSTMENTS (Up to 767px) */
 @media screen and (max-width: 767px) {
   .saved-news-header {
-    padding: 88px 0 32px;
+    padding: 24px 0 32px;
   }
+
   .saved-news-header__container {
     padding: 0 16px;
+  }
+
+  .saved-news-header__subtitle {
+    margin-bottom: 8px;
+  }
+
+  .saved-news-header__title {
+    margin-bottom: 14px;
   }
 }

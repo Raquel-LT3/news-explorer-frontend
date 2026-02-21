@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import logoutWhite from "../../images/logout.svg";
 
-// 1. Add isLoggedIn and onSignInClick to the props
+/**
+ * Navigation component for header links and user actions
+ */
 function Navigation({
   isSavedNews,
   isMenuOpen,
@@ -14,12 +16,16 @@ function Navigation({
   username,
   onLogout,
 }) {
+  const linkThemeClass = isSavedNews ? "navigation__link_theme_light" : "";
+  const buttonThemeClass = isSavedNews ? "navigation__button_theme_light" : "";
+  const iconThemeClass = isSavedNews ? "navigation__logout-icon_theme_light" : "";
+
   return (
     <nav className={`navigation ${isMenuOpen ? "navigation_visible" : ""}`}>
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `navigation__link ${isSavedNews ? "navigation__link_theme_light" : ""} ${isActive ? "navigation__link_active" : ""}`
+          `navigation__link ${linkThemeClass} ${isActive ? "navigation__link_active" : ""}`
         }
       >
         Home
@@ -29,7 +35,7 @@ function Navigation({
         <NavLink
           to="/saved-news"
           className={({ isActive }) =>
-            `navigation__link ${isSavedNews ? "navigation__link_theme_light" : ""} ${isActive ? "navigation__link_active" : ""}`
+            `navigation__link ${linkThemeClass} ${isActive ? "navigation__link_active" : ""}`
           }
         >
           Saved articles
@@ -37,20 +43,19 @@ function Navigation({
       )}
 
       <button
-        className={`navigation__button ${isSavedNews ? "navigation__button_theme_light" : ""}`}
+        className={`navigation__button ${buttonThemeClass}`}
         type="button"
         onClick={isLoggedIn ? onLogout : onSignInClick}
       >
-        {/* If logged in, show username (fallback to Elise). If not, show Sign in */}
         <span className="navigation__username">
-          {isLoggedIn ? (username || "Elise") : "Sign in"}
+          {isLoggedIn ? (username || "User") : "Sign in"}
         </span>
 
         {isLoggedIn && (
           <img
             src={logoutWhite}
             alt="Logout"
-            className={`navigation__logout-icon ${isSavedNews ? "navigation__logout-icon_theme_light" : ""}`}
+            className={`navigation__logout-icon ${iconThemeClass}`}
           />
         )}
       </button>

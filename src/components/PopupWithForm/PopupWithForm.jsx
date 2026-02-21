@@ -2,6 +2,9 @@
 import React, { useEffect } from "react";
 import "./PopupWithForm.css";
 
+/**
+ * Reusable Popup component with form handling and accessibility features
+ */
 function PopupWithForm({
   name,
   title,
@@ -11,18 +14,22 @@ function PopupWithForm({
   buttonText,
   onLinkClick,
   linkText,
-  isValid, // New: boolean for validation
+  isValid,
   onSubmit,
 }) {
+  // Handle Escape key closure
   useEffect(() => {
     if (!isOpen) return;
+    
     const handleEscClose = (e) => {
       if (e.key === "Escape") onClose();
     };
+    
     document.addEventListener("keydown", handleEscClose);
     return () => document.removeEventListener("keydown", handleEscClose);
   }, [isOpen, onClose]);
 
+  // Handle clicking outside the popup container
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) onClose();
   };
@@ -36,9 +43,11 @@ function PopupWithForm({
         <button
           className="popup__close-button"
           type="button"
+          aria-label="Close popup"
           onClick={onClose}
         />
         <h2 className="popup__title">{title}</h2>
+        
         <form
           className="popup__form"
           name={name}

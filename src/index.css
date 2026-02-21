@@ -1,30 +1,44 @@
 /* src/index.css */
-/* Global styles for the application */
 
-
+/* Global Reset and Layout Stability */
 * {
-  box-sizing: border-box; /* This is mandatory for 1440px layouts */
+  box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  background-color: #ffffff;
 }
 
+/* Base Typography and Theme */
 :root {
   font-family: 'Inter', Arial, sans-serif;
-  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden; /* This hides the scrollbar if a tiny bit of content peaks out */
-  margin: 0;
+/* Link reset if needed globally */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Button reset for consistent cross-browser behavior */
+button {
+  border: none;
+  background: none;
   padding: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
