@@ -1,6 +1,11 @@
 // src/utils/dateUtils.js
 
-export const formatDate = (isoString) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(isoString).toLocaleDateString('en-US', options);
+export const formatDate = (isoDate) => {
+  if (!isoDate) return "";
+  const date = new Date(isoDate);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 };

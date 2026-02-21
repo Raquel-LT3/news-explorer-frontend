@@ -50,19 +50,23 @@ function App() {
 
     const articleToSave = { ...article, keyword: activeKeyword };
 
-   api.saveArticle(articleToSave)
-    .then((savedItem) => {
-      setSavedArticles([savedItem, ...savedArticles]);
-    })
-    .catch(console.error);
+    api
+      .saveArticle(articleToSave)
+      .then((savedItem) => {
+        setSavedArticles([savedItem, ...savedArticles]);
+      })
+      .catch(console.error);
   };
 
-  const handleDeleteArticle = (articleId) => {
+  const handleDeleteArticle = (articleIdentifier) => {
     api
-      .deleteArticle(articleId)
+      .deleteArticle(articleIdentifier)
       .then(() => {
         setSavedArticles((state) =>
-          state.filter((item) => item._id !== articleId),
+          state.filter(
+            (item) =>
+              item._id !== articleIdentifier && item.url !== articleIdentifier,
+          ),
         );
       })
       .catch(console.error);
@@ -126,13 +130,13 @@ function App() {
     setIsInfoTooltipOpen(false);
   };
 
-const handleLogin = (email, password, username) => {
-  // If the form provides a username, use it; otherwise, use a fallback
-  const nameToUse = username || "Raquel"; 
-  setCurrentUser(nameToUse);
-  setIsLoggedIn(true);
-  closeAllPopups();
-};
+  const handleLogin = (email, password, username) => {
+    // If the form provides a username, use it; otherwise, use a fallback
+    const nameToUse = username || "Raquel";
+    setCurrentUser(nameToUse);
+    setIsLoggedIn(true);
+    closeAllPopups();
+  };
 
   const handleRegisterSubmit = (email, password, username) => {
     setCurrentUser(username);

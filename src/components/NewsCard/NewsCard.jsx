@@ -2,35 +2,32 @@
 
 import React from "react";
 import "./NewsCard.css";
+import { formatDate } from "../../utils/dateUtils";
 
 function NewsCard({
-  article,       // Pass the whole article object
+  article,
   isLoggedIn,
-  onSave,        // Function from App.jsx
-  onDelete,      // Function from App.jsx
-  savedArticles, // Array from App.jsx
+  onSave,
+  onDelete,
+  savedArticles,
   isSavedPage,
-  // Keep your existing UI props if you prefer mapping them individually:
-  image, date, title, text, source, keyword 
+  image,
+  date,
+  title,
+  text,
+  source,
+  keyword,
 }) {
-  
-  // Check if this specific article is already saved by comparing URLs
-  // This ensures the blue icon stays blue even after a page switch
-  const isSaved = savedArticles?.some((item) => item.url === (article?.url || image));
+  const isSaved = savedArticles?.some(
+    (item) => item.url === (article?.url || image),
+  );
 
   const handleButtonClick = () => {
     if (!isLoggedIn) return;
-
     if (isSavedPage) {
-      // On the Saved News page, the button should delete
       onDelete(article._id || article.url);
-    } else if (isSaved) {
-      // If already saved, clicking again should probably delete it 
-      // (Optional logic, but common for bookmarks)
-      onDelete(article.url);
     } else {
-      // Otherwise, save it!
-      onSave(article);
+      isSaved ? onDelete(article.url) : onSave(article);
     }
   };
 
@@ -43,27 +40,30 @@ function NewsCard({
 
         <img src={image} alt={title} className="news-card__image" />
 
+        {/* CORRECTION: Button and Tooltip are now adjacent so CSS '+' works */}
         <button
-          className={`news-card__bookmark-button 
-            ${isSavedPage ? "news-card__delete-button" : ""} 
-            ${isSaved ? "news-card__bookmark-button_marked" : ""}`}
+          className={`news-card__button 
+            ${isSavedPage ? "news-card__button_type_delete" : "news-card__button_type_bookmark"} 
+            ${!isSavedPage && isSaved ? "news-card__button_type_bookmark_marked" : ""}`}
           type="button"
           onClick={handleButtonClick}
         />
 
-        {!isLoggedIn && (
-          <div className="news-card__tooltip">Sign in to save articles</div>
-        )}
-
-        {isLoggedIn && isSavedPage && (
-          <div className="news-card__tooltip">Remove from saved</div>
-        )}
+        <div className="news-card__tooltip">
+          {!isLoggedIn
+            ? "Sign in to save articles"
+            : isSavedPage
+              ? "Remove from saved"
+              : ""}
+        </div>
       </div>
 
       <div className="news-card__content">
-        <p className="news-card__date">{date}</p>
+        <p className="news-card__date">{formatDate(date)}</p>
         <h3 className="news-card__title">{title}</h3>
+        {/* The text will take up space, but not 'grow' */}
         <p className="news-card__text">{text}</p>
+        {/* The source will be pushed to the bottom by CSS margin-top: auto */}
         <p className="news-card__source">{source}</p>
       </div>
     </article>
