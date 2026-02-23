@@ -2,7 +2,6 @@
 
 .news-card-list {
   width: 100%;
-  max-width: 1440px;
   margin: 0 auto;
   padding: 80px 104px;
   background-color: #F5F6F7;
@@ -14,7 +13,7 @@
 
 .news-card-list__title {
   align-self: flex-start;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 40px;
   line-height: 46px;
   margin: 0 0 64px;

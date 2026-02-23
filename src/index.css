@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 html, body {
   margin: 0;
@@ -17,7 +16,7 @@ html, body {
 
 /* Base Typography and Theme */
 :root {
-  font-family: 'Roboto', Arial, sans-serif; /* Changed from Roboto Slab */
+  font-family: 'Roboto', Arial, sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -15,7 +15,7 @@
   flex-grow: 1;
   border: none;
   padding: 0 24px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
   outline: none;
   background: transparent;
@@ -34,7 +34,7 @@
   border: none;
   padding: 0 56px;
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
