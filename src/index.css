@@ -48,7 +48,5 @@ button:hover, a:hover {
   cursor: pointer;
 }
 
-/* Focus for all form inputs */
-input:focus {
-  outline: 2px solid #2f71e5; /* The Figma Blue */
-}
+
+ 
