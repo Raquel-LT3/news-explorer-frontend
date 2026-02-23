@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 /**
- * RegisterPopup component for new user registration
+ * Handles the user registration flow, including input validation 
+ * and server-side error display simulation.
  */
 function RegisterPopup({ isOpen, onClose, onSignInClick, onRegister }) {
   const [email, setEmail] = useState("");
@@ -12,9 +13,16 @@ function RegisterPopup({ isOpen, onClose, onSignInClick, onRegister }) {
   const [username, setUsername] = useState("");
   const [serverError, setServerError] = useState("");
 
-  // Reset errors when the popup opens/closes
+  /**
+   * Resets the server error message only when the popup is opened.
+   * The eslint-disable line ensures the linter doesn't flag this 
+   * intentional state reset.
+   */
   useEffect(() => {
-    setServerError("");
+    if (isOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setServerError("");
+    }
   }, [isOpen]);
 
   const isValid = 
@@ -25,7 +33,7 @@ function RegisterPopup({ isOpen, onClose, onSignInClick, onRegister }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid) {
-      // Logic for handling registration is passed to the parent handler
+      // Pass credentials and the error setter to the parent handler
       onRegister(email, password, username, setServerError);
     }
   };

@@ -5,7 +5,6 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 
 // API Imports
-import * as api from "../../utils/api";
 import * as newsApi from "../../utils/NewsApi";
 
 // Component Imports
@@ -42,20 +41,21 @@ function App() {
   /* --- Article Handlers (Simulated for Sprint 3) --- */
 
   const handleSaveArticle = (article) => {
-    if (!isLoggedIn) {
-      handleSignInClick();
-      return;
-    }
+  if (!isLoggedIn) {
+    handleSignInClick();
+    return;
+  }
 
-    // Simulate backend response by adding to local state
-    const savedItem = { 
-      ...article, 
-      _id: Math.random().toString(36).substr(2, 9), 
-      keyword: activeKeyword 
-    };
-    
-    setSavedArticles([savedItem, ...savedArticles]);
+  const savedItem = {
+    ...article,
+    // Use the URL directly. If URL is missing, use a static string or 
+    // article.title to avoid the "impure" Date.now() call.
+    _id: article.url || article.title, 
+    keyword: activeKeyword,
   };
+
+  setSavedArticles([savedItem, ...savedArticles]);
+};
 
   const handleDeleteArticle = (articleIdentifier) => {
     // Simulate backend deletion by filtering local state
@@ -71,7 +71,7 @@ function App() {
   const handleSearchSubmit = (keyword) => {
     // Validation: Prevent search if keyword is empty or whitespace
     if (!keyword || keyword.trim().length === 0) {
-      return; 
+      return;
     }
 
     setActiveKeyword(keyword);
@@ -92,9 +92,9 @@ function App() {
       })
       .catch((err) => {
         setIsServerError(true);
-        // Errors are kept for debugging during development, 
-        // but typically minimized for production
+        console.error(err); // Adding this line uses the 'err' variable
       })
+
       .finally(() => {
         setIsLoading(false);
       });

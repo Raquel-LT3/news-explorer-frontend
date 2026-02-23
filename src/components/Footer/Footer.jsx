@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import githubIcon from "../../images/github.svg";
-import linkedinIcon from "../../images/Union.png";
+import linkedinIcon from "../../images/linkedin.svg";
 
 function Footer() {
   return (
