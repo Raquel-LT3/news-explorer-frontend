@@ -1,0 +1,52 @@
+/* src/index.css */
+
+/* Global Reset and Layout Stability */
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  background-color: #ffffff;
+}
+
+/* Base Typography and Theme */
+:root {
+  font-family: 'Roboto', Arial, sans-serif; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Link reset if needed globally */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Button reset for consistent cross-browser behavior */
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button:hover, a:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+
+ 

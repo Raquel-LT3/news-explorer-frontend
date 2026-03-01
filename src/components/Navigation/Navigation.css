@@ -1,0 +1,125 @@
+/* src/components/Navigation/Navigation.css */
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  gap: 42px;
+}
+
+.navigation__link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: opacity 0.3s, border-bottom-color 0.3s;
+  border-bottom: 3px solid transparent; 
+  box-sizing: border-box;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
+}
+
+.navigation__link_active {
+  border-bottom-color: #ffffff;
+}
+
+/* Light theme modifiers for Saved News page */
+.navigation__link_theme_light {
+  color: #1a1b22;
+}
+
+.navigation__link_theme_light.navigation__link_active {
+  border-bottom-color: #1a1b22;
+}
+
+.navigation__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 112px;
+  height: 48px;
+  padding: 0 16px;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navigation__button_theme_light {
+  color: #1a1b22;
+  border: 1px solid #1a1b22;
+}
+
+.navigation__logout-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.navigation__logout-icon_theme_light {
+  filter: brightness(0);
+}
+
+/* Mobile layout */
+@media screen and (max-width: 767px) {
+  .navigation {
+    display: none;
+  }
+
+  .navigation_visible {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    height: auto; 
+    min-height: 174px;
+    padding: 0 16px 100px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    background-color: #1a1b22;
+    border-radius: 0 0 16px 16px;
+    z-index: 100;
+  }
+
+  .navigation__link {
+    width: 100%;
+    color: #ffffff !important;
+    border-bottom: none !important;
+    padding: 16px 0;
+  }
+
+  .navigation__link_active {
+    font-weight: 700;
+  }
+
+  .navigation__button {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    right: 16px;
+    width: auto; 
+    max-width: 288px;
+    margin: 0 auto !important;
+    height: 56px;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  .navigation_visible .navigation__logout-icon {
+    filter: brightness(0) invert(1) !important;
+  }
+}

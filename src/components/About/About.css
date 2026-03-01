@@ -1,0 +1,100 @@
+/* src/components/About/About.css */
+
+.about {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 104px; 
+  display: flex;
+  gap: 102px; 
+  align-items: center; 
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.about__image {
+  flex-shrink: 0;
+  width: 464px; 
+  height: 464px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 25%; 
+  margin: 0; 
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px;
+}
+.about__title {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 40px;
+  line-height: 46px;
+  margin: 0 0 24px;
+}
+
+.about__text {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 16px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .about {
+    flex-direction: row;
+    padding: 40px 40px 80px;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .about__image {
+    width: 232px;
+    height: 232px;
+  }
+
+  .about__content {
+    max-width: 424px;
+    text-align: left;
+  }
+}
+
+/* 2. Mobile View: Stacked for screens 767px and below */
+@media screen and (max-width: 767px) {
+  .about {
+    flex-direction: column;
+    padding: 40px 16px 40px;
+    align-items: center;
+    gap: 0;
+  }
+
+  .about__image {
+    width: 272px;
+    height: 272px;
+    margin: 0 0 24px 0;
+  }
+
+  .about__content {
+    max-width: 288px;
+    width: 100%;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0 0 16px;
+  }
+
+  .about__text {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+    padding-bottom: 25px;
+  }
+
+  .about__title,
+  .about__text {
+    text-align: left;
+  }
+}

@@ -1,0 +1,126 @@
+/* src/components/Header/Header.css */
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header_theme_light {
+  position: relative;
+  background-color: #fff;
+  border-bottom: 1px solid #d1d2d6;
+}
+
+.header__container {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 104px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.header__logo {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header__logo_theme_light {
+  color: #1a1b22;
+}
+
+.header__menu-button {
+  display: none;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../images/menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.header__menu-button_theme_light {
+  filter: invert(100%);
+}
+
+.header_theme_light.header_menu-open {
+  background-color: #1a1b22;
+}
+
+@media screen and (max-width: 1024px) {
+  .header__container {
+    padding: 0 40px;
+  }
+}
+
+/* Mobile Menu Styles */
+@media screen and (max-width: 767px) {
+  .header {
+    height: 56px;
+    padding: 0 16px;
+    border-bottom: none;
+  }
+
+  .header__container {
+    height: 56px;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .header__menu-button {
+    display: block !important;
+    background-size: contain;
+  }
+
+  .header.header_menu-open {
+    height: 56px;
+    background-color: #1a1b22;
+    position: fixed;
+    z-index: 101;
+  }
+
+  .header_menu-open .header__menu-button_type_close {
+    background-image: url("../../images/back.svg") !important;
+    filter: none !important;
+  }
+
+  .header.header_menu-open::after {
+    content: "";
+    position: fixed;
+    top: 230px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 230px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    pointer-events: none;
+  }
+
+  .header_menu-open .header__logo {
+    color: #fff !important;
+  }
+
+  .header_menu-open .header__menu-button {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.header__menu-button_hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
